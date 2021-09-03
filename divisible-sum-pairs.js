@@ -1,19 +1,17 @@
-const s = [2, 2, 1, 3, 2];
-const d = 4;
-const m = 2;
+const ar = [1, 3, 2, 6, 1, 2];
+const n = 6;
+const k = 3;
 
-function birthday(s = [], d, m) {
-  const limit = s.length - (m - 1);
-  let answer = 0;
-
-  for (let i = 0; i < limit; i++) {
-    const canShare =
-      s.slice(i, i + m).reduce((acc, current) => acc + current) === d;
-    if (canShare) {
-      answer++;
+function divisibleSumPairs(n, k, ar = []) {
+  let result = 0;
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = i + 1; j < n; j++) {
+      if ((ar[i] + ar[j]) % k === 0) {
+        result++;
+      }
     }
   }
-  return answer;
+  return result;
 }
 
-console.log(birthday(s, d, m));
+console.log(divisibleSumPairs(n, k, ar));
